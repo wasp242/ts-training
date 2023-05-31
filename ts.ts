@@ -1,11 +1,9 @@
-const getHiddenCard = (a: string, b = 4): string => {
-  let res = "";
-  for (let i = 0; i < b; i++) {
-    res += "*";
-  }
-  res += a.split("").slice(-4).join("");
-  return res;
+const filterAnagrams = (word: string, arr: string[]): string[] => {
+  const sorted = word.split("").sort().join("");
+  return arr.filter((item) => item.split("").sort().join("") === sorted);
 };
 
-console.log(getHiddenCard("1234567812345678", 2));
-export default getHiddenCard;
+console.log(
+  filterAnagrams("racer", ["crazer", "carer", "racar", "caers", "racer"])
+);
+export default filterAnagrams;
