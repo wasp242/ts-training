@@ -1,9 +1,12 @@
-const filterAnagrams = (word: string, arr: string[]): string[] => {
-  const sorted = word.split("").sort().join("");
-  return arr.filter((item) => item.split("").sort().join("") === sorted);
+const filter = (numbers: number[], callback: (n: number) => boolean) => {
+  let arr: number[] = [];
+  for (let i = 0; i < numbers.length; i++) {
+    const value = callback(numbers[i]);
+    value ? arr.push(numbers[i]) : null;
+  }
+  return arr;
 };
 
-console.log(
-  filterAnagrams("racer", ["crazer", "carer", "racar", "caers", "racer"])
-);
-export default filterAnagrams;
+export default filter;
+const numbers = [1, -5, 2, 3, 4, 133];
+console.log(filter(numbers, (n) => n > 3)); // [4, 133]
