@@ -1,12 +1,12 @@
-const filter = (numbers: number[], callback: (n: number) => boolean) => {
-  let arr: number[] = [];
-  for (let i = 0; i < numbers.length; i++) {
-    const value = callback(numbers[i]);
-    value ? arr.push(numbers[i]) : null;
+export function multiplicationTable(size: number): number[][] {
+  let arr: number[][] = [];
+  for (let i: number = 1; i < size + 1; i++) {
+    let innerArr: number[] = [];
+    for (let j: number = i; j < size * i + 1; j += i) {
+      innerArr.push(j);
+    }
+    arr.push(innerArr);
   }
   return arr;
-};
-
-export default filter;
-const numbers = [1, -5, 2, 3, 4, 133];
-console.log(filter(numbers, (n) => n > 3)); // [4, 133]
+}
+console.log(multiplicationTable(3));
